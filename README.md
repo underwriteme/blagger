@@ -21,4 +21,4 @@ In order to get up and running with blagger, please do the following:
 
     *Replace -1 with the number of commits that you have made*
     
-3. Email the patch to [info@underwriteme.co.uk](mailto:info@underwriteme.co.uk)
+3. Email the patch to [recruitment@underwriteme.co.uk](mailto:recruitment@underwriteme.co.uk)
