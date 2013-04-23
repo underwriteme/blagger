@@ -16,3 +16,5 @@ In order to get up and running with blagger, please do the following:
 
 1. Make the changes detailed within the app
 2. Submit them to us via a pull request!
+
+Added a line to the readme file
