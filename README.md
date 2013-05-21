@@ -1,6 +1,6 @@
 # Blagger
 
-Blagger is a small, grails based, blogging app.
+Blagger is a small, Grails based, blogging app.
 
 ## Get up and running
 
