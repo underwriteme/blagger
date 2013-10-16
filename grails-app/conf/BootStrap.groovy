@@ -37,7 +37,12 @@ class BootStrap {
         """
 
         Post post = new Post(title: 'Your challenge if you choose to accept it...', email: 'info@underwriteme.co.uk', content: content)
-        post.save()
+        post.save(failOnError: true)
+
+        (0..30).each { i ->
+            Post thispost = new Post(title: "sample post $i", email: 'info@underwriteme.co.uk', content: "content $i")
+            thispost.save(failOnError: true)
+        }
 
     }
     def destroy = {

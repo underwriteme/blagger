@@ -1,6 +1,7 @@
 modules = {
     blog {
         dependsOn 'bootstrap'
-        resource url:'css/blog.css'
+        dependsOn 'jquery'
+        resource url: 'css/blog.css'
     }
 }
