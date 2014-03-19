@@ -9,10 +9,10 @@ public class PostSpec extends Specification {
 
 	@Unroll
 	def 'Creating a post when the title is #title'() {
-		when: 'the title is not given'
-		def p = new Post(title: title, email: "SOME_EMAIL", content: "SOME_CONTENT")
+		when: 'a new post is created'
+		def p = new Post(title: title, email: "test@test.com", content: "SOME_CONTENT")
 
-		then: 'validation should fail'
+		then: 'the post is validated'
 		p.validate() == shouldPass
 
 		where:
@@ -23,5 +23,19 @@ public class PostSpec extends Specification {
 		'AB'   | false
 		'ABC'  | true
 		'ABCD' | true
+	}
+	
+	def 'Test that the email is validated correctly'() {
+		when: 'the email is invalid'
+		def p = new Post(title: "SOME_TITLE", email: "SOME_EMAIL", content: "SOME_CONTENT")
+		
+		then: 'validation should fail'
+		!p.validate()
+		
+		when: 'the email is valid'
+		p = new Post(title: "SOME_TITLE", email: "test@test.com", content: "SOME_CONTENT")
+		
+		then: 'validation should pass'
+		p.validate()
 	}
 }
