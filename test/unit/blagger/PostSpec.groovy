@@ -25,17 +25,19 @@ public class PostSpec extends Specification {
 		'ABCD' | true
 	}
 	
-	def 'Test that the email is validated correctly'() {
-		when: 'the email is invalid'
-		def p = new Post(title: "SOME_TITLE", email: "SOME_EMAIL", content: "SOME_CONTENT")
+	@Unroll
+	def 'Test creating a post when the email is #email'() {
+		when: 'a new post is created'
+		def p = new Post(title: "SOME_TITLE", email: email, content: "SOME_CONTENT")
 		
-		then: 'validation should fail'
-		!p.validate()
+		then: 'the post is validated'
+		p.validate() == shouldPass
 		
-		when: 'the email is valid'
-		p = new Post(title: "SOME_TITLE", email: "test@test.com", content: "SOME_CONTENT")
-		
-		then: 'validation should pass'
-		p.validate()
+		where:
+		email           | shouldPass
+		null            | false
+		''              | false
+		'SOME_EMAIL'    | false
+		'test@test.com' | true
 	}
 }
