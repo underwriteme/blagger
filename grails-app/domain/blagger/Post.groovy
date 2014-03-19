@@ -11,7 +11,7 @@ class Post {
     static constraints = {
 		title    blank: false, minSize: 3
 		email    blank: false, email: true
-		content: blank: false
+		content  blank: false
     }
 
     static mapping = {

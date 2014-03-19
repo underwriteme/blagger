@@ -40,4 +40,20 @@ public class PostSpec extends Specification {
 		'SOME_EMAIL'    | false
 		'test@test.com' | true
 	}
+	
+	@Unroll
+	def 'Tests creating a post when the content is #content'() {
+		when: 'a new post is created'
+		def p = new Post(title: "SOME_TITLE", email: "test@test.com", content: content)
+		
+		then: 'the post is validated'
+		p.validate() == shouldPass
+		
+		where:
+		content | shouldPass
+		null    | false
+		''      | false
+		'A'     | true
+		'AB'    | true
+	}
 }
