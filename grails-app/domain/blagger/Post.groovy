@@ -9,6 +9,7 @@ class Post {
     Date lastUpdated
 
     static constraints = {
+		title minSize: 3, blank: false
     }
 
     static mapping = {
