@@ -10,7 +10,7 @@ public class PostSpec extends Specification {
 	@Unroll
 	def 'Creating a post when the title is #title'() {
 		when: 'a new post is created'
-		def p = new Post(title: title, email: "test@test.com", content: "SOME_CONTENT")
+		def p = new Post(category: "Some category", title: title, email: "test@test.com", content: "SOME_CONTENT")
 
 		then: 'the post is validated'
 		p.validate() == shouldPass
@@ -28,7 +28,7 @@ public class PostSpec extends Specification {
 	@Unroll
 	def 'Test creating a post when the email is #email'() {
 		when: 'a new post is created'
-		def p = new Post(title: "SOME_TITLE", email: email, content: "SOME_CONTENT")
+		def p = new Post(category: "Some category", title: "SOME_TITLE", email: email, content: "SOME_CONTENT")
 		
 		then: 'the post is validated'
 		p.validate() == shouldPass
@@ -44,7 +44,7 @@ public class PostSpec extends Specification {
 	@Unroll
 	def 'Tests creating a post when the content is #content'() {
 		when: 'a new post is created'
-		def p = new Post(title: "SOME_TITLE", email: "test@test.com", content: content)
+		def p = new Post(category: "Some category", title: "SOME_TITLE", email: "test@test.com", content: content)
 		
 		then: 'the post is validated'
 		p.validate() == shouldPass
@@ -55,5 +55,21 @@ public class PostSpec extends Specification {
 		''      | false
 		'A'     | true
 		'AB'    | true
+	}
+	
+	@Unroll
+	def 'Tests creating a post when the category is #category'() {
+		when: 'a new post is created'
+		def p = new Post(category: category, title: "SOME_TITLE", email: "test@test.com", content: 'abcde')
+		
+		
+		then: 'the post is validated'
+		p.validate() == shouldPass
+		
+		where:
+		category | shouldPass
+		null     | false
+		''       | false
+		'A'      | true
 	}
 }
