@@ -5,6 +5,10 @@
 
 <body>
 
+<g:form action="list">
+Search: <g:textField name="category"/><g:submitButton name="Submit"/>
+</g:form>
+
 <g:each in="${posts}" var="post">
 
     <h1>${post.title}</h1>
