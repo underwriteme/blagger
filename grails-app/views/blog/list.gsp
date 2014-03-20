@@ -15,6 +15,7 @@
     <hr/>
 
 </g:each>
+<g:paginate controller="blog" action="list" max="5" total="${postCount}" />
 
 </body>
 
