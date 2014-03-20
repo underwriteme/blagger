@@ -13,7 +13,7 @@ class BlogControllerSpec extends spock.lang.Specification {
     def 'List returns the blag posts'(){
 
         setup:
-            new Post(title: 'test', email: 'test@test.com', content: 'test').save()
+            new Post(category: 'category', title: 'test', email: 'test@test.com', content: 'test').save()
 
         and:
             def model = controller.list()
@@ -27,8 +27,8 @@ class BlogControllerSpec extends spock.lang.Specification {
     def 'List returns the blag posts in the correct order'(){
 
         setup:
-            new Post(title: 'test1', email: 'test@test.com', content: 'test').save()
-            new Post(title: 'test2', email: 'test@test.com', content: 'test').save()
+            new Post(category: 'category', title: 'test1', email: 'test@test.com', content: 'test').save()
+            new Post(category: 'category', title: 'test2', email: 'test@test.com', content: 'test').save()
 
         and:
             def model = controller.list()
@@ -42,6 +42,7 @@ class BlogControllerSpec extends spock.lang.Specification {
     def 'Create adds a new blag post and redirects'() {
 
         setup:
+		    controller.params.category = 'category'
             controller.params.title = 'test'
             controller.params.email = 'test@test.com'
             controller.params.content = 'test'
@@ -52,6 +53,7 @@ class BlogControllerSpec extends spock.lang.Specification {
 
         then:
             posts
+			posts[0].category == 'category'
             posts[0].title == 'test'
             posts[0].email == 'test@test.com'
             posts[0].content == 'test'

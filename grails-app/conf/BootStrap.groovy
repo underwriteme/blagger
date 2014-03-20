@@ -36,7 +36,7 @@ class BootStrap {
         </dl>
         """
 
-        Post post = new Post(title: 'Your challenge if you choose to accept it...', email: 'info@underwriteme.co.uk', content: content)
+        Post post = new Post(category: 'Challenge', title: 'Your challenge if you choose to accept it...', email: 'info@underwriteme.co.uk', content: content)
         post.save()
 
     }
