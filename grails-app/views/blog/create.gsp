@@ -16,6 +16,12 @@
         <fieldset>
         <legend>Blag about something new!</legend>
             <div class="control-group">
+                <label class="control-label" for="title">Category</label>
+                <div class="controls">
+                    <g:textField name="category" value="${post?.category}" placeholder="The category..." class="input-block-level"/><g:hasErrors bean="${post}"><g:renderErrors bean="${post}" field="category"/></g:hasErrors>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="title">Title</label>
                 <div class="controls">
                     <g:textField name="title" value="${post?.title}" placeholder="My first blag post..." class="input-block-level"/><g:hasErrors bean="${post}"><g:renderErrors bean="${post}" field="title"/></g:hasErrors>
