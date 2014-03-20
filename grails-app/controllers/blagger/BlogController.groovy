@@ -9,7 +9,7 @@ class BlogController {
     }
 
     def create() {
-        [post: new Post(params)]
+        [categories: Post.createCriteria().list { projections { distinct("category") } }, post: new Post(params)]
     }
 
     def createPost() {

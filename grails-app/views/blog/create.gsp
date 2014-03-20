@@ -3,8 +3,11 @@
 
 <r:script>
 
-    $('input[name=title]').focus();
+    $('input[name=category]').focus();
 
+    $('input[name=category]').typeahead({source: [
+             <g:each in="${categories}" var="c">'${c}',</g:each>
+            ] });
 </r:script>
 
 <head></head>

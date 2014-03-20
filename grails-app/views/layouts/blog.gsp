@@ -5,6 +5,8 @@
     <g:layoutHead />
 
     <r:require module="blog"/>
+    <r:require modules="typeahead-js"/>
+    <r:require modules="typeahead-bootstrap-css"/>
 
     <r:layoutResources/>
 </head>
