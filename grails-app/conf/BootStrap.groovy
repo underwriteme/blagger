@@ -32,7 +32,7 @@ class BootStrap {
                     <li>Allow the filtering of blag posts by tag on the home page</li>
                 </ol>
             </dd>
-            <dt>Submit us a pull request with your changes!<dt>
+            <dt>Create and email a patch with your changes as specified in Git<dt>
         </dl>
         """
 
