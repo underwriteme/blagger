@@ -9,38 +9,39 @@
 
 <body>
 
-    <g:form controller="blog" action="createPost" class="form-horizontal">
+<g:form controller="blog" action="createPost" class="form-horizontal">
 
-        <fieldset>
+    <fieldset>
         <legend>Blag about something new!</legend>
 
-            <div class="control-group">
-                <label class="control-label" for="title">Title</label>
-                <div class="controls">
-                    <g:textField name="title" value="${post?.title}" placeholder="My first blag post..." class="input-block-level"/>
-                </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label for="title">Title</label>
+                <g:textField id="title" name="title" value="${post?.title}" placeholder="My first blag post..." class="form-control"/>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="title">Your email</label>
-                <div class="controls">
-                    <g:textField name="email" value="${post?.email}" placeholder="test@test.com" class="input-block-level"/>
-                </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label for="email">Your email</label>
+                <g:textField id="email" name="email" value="${post?.email}" placeholder="test@test.com" class="form-control"/>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="content">The blag</label>
-                <div class="controls">
-                    <g:textArea name="content" value="${post?.content}" placeholder="The blag..." class="input-block-level" rows="10"/>
-                </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label for="content">The blag</label>
+                <g:textArea id="content" name="content" value="${post?.content}" placeholder="The blag..." class="form-control" rows="10"/>
             </div>
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" class="btn">Submit</button>
-                </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <button type="submit" class="btn">Submit</button>
             </div>
+        </div>
 
-        </fieldset>
 
-    </g:form>
+    </fieldset>
+
+</g:form>
 
 </body>
 
