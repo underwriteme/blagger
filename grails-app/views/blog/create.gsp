@@ -1,11 +1,9 @@
 
 <html>
 
-<r:script>
-
+<g:javascript>
     $('input[name=title]').focus();
-
-</r:script>
+</g:javascript>
 
 <head></head>
 
