@@ -43,26 +43,25 @@ grails.project.dependency.resolution = {
 
         // runtime 'mysql:mysql-connector-java:5.1.20'
 
-        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+        //test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.8.3"
-        runtime ":resources:1.1.6"
 
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.4"
+        // plugins for the build system only
+        build ":tomcat:7.0.55"
 
-        build ":tomcat:$grailsVersion"
+        // plugins for the compile step
+        compile ":scaffolding:2.1.2"
+        compile ':cache:1.1.8'
+        compile ":asset-pipeline:1.9.9"
 
-        runtime ":database-migration:1.2.1"
+        // plugins needed at runtime but not for compilation
+        runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
+        runtime ":database-migration:1.4.0"
+        runtime ":jquery:1.11.1"
 
-        compile ':cache:1.0.1'
-
-        compile ":twitter-bootstrap:2.3.0"
+        compile ":twitter-bootstrap:3.3.1"
 
         test(":spock:0.7") {
             exclude "spock-grails-support"
