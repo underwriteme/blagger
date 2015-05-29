@@ -4,9 +4,9 @@
     <title><g:layoutTitle default="Blagger" /></title>
     <g:layoutHead />
 
-    <r:require module="blog"/>
+    <asset:stylesheet src="main.css"/>
+    <asset:javascript src="main.js"/>
 
-    <r:layoutResources/>
 </head>
 <body>
 
@@ -25,6 +25,5 @@
 
 </div>
 
-<r:layoutResources/>
 </body>
 </html>
