@@ -4,7 +4,7 @@
 <head></head>
 
 <body>
-
+<p>test</p>
 <g:each in="${posts}" var="post">
 
     <h1>${post.title}</h1>
