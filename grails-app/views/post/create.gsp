@@ -11,7 +11,7 @@
 
 <body>
 
-    <g:form controller="blog" action="createPost" class="form-horizontal">
+    <g:form controller="post" action="savePost" class="form-horizontal">
 
         <fieldset>
         <legend>Blag about something new!</legend>

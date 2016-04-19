@@ -5,16 +5,16 @@ import grails.test.mixin.*
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(BlogController)
+@TestFor(PostController)
 @Mock(Post)
-class BlogControllerSpec extends spock.lang.Specification {
+class PostControllerSpec extends spock.lang.Specification {
 
     def 'list returns the blag posts'(){
         given:
         new Post(title: 'test', email: 'test@test.com', content: 'test').save()
 
         when:
-        def model = controller.list()
+        def model = controller.index()
 
         then:
         model.posts
@@ -27,7 +27,7 @@ class BlogControllerSpec extends spock.lang.Specification {
         new Post(title: 'test2', email: 'test@test.com', content: 'test').save()
 
         when:
-        def model = controller.list()
+        def model = controller.index()
 
         then:
         model.posts
@@ -42,7 +42,7 @@ class BlogControllerSpec extends spock.lang.Specification {
         controller.params.content = 'test'
 
         when:
-        controller.createPost()
+        controller.savePost()
         def posts = Post.list()
 
         then:
@@ -50,7 +50,7 @@ class BlogControllerSpec extends spock.lang.Specification {
         posts[0].title == 'test'
         posts[0].email == 'test@test.com'
         posts[0].content == 'test'
-        response.redirectUrl.endsWith('/list')
+        response.redirectUrl.endsWith('/index')
     }
 
 }
