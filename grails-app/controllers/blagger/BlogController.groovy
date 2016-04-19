@@ -5,7 +5,7 @@ class BlogController {
     static defaultAction = "list"
 
     def list() {
-        [posts: Post.list().sort { lhs, rhs -> rhs.id <=> lhs.id }]
+        [posts: Post.list(sort: "id", order: "desc")]
     }
 
     def create() {
