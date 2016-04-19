@@ -15,7 +15,7 @@
         <g:link controller="post" action="index"><h1>Blagger</h1></g:link>
         <p class="lead">Blogging for blaggers; it's what people think you know that matters</p>
 
-        <g:link controller="post" action="create" class="btn btn-large btn-primary">Blag something...</g:link>
+        <g:link controller="post" action="create" class="btn btn-lg btn-primary">Blag something...</g:link>
     </div>
 </header>
 

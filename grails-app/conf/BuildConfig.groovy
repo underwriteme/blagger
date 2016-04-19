@@ -64,7 +64,7 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.0.1'
 
-        compile ":twitter-bootstrap:2.3.0"
+        compile ":twitter-bootstrap:3.3.4"
 
         test(":spock:0.7") {
             exclude "spock-grails-support"
