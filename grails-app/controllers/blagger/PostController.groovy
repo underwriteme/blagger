@@ -3,7 +3,7 @@ package blagger
 class PostController {
 
     def index() {
-        [posts: Post.list(sort: "id", order: "desc")]
+        [posts: Post.list(sort: 'id', order: 'desc')]
     }
 
     def create() {
@@ -14,7 +14,7 @@ class PostController {
         def newPost = new Post(params)
 
         if (!newPost.save(flush: true)) {
-            render(view: "create", model: [post: newPost])
+            render(view: 'create', model: [post: newPost])
             return
         }
 
