@@ -2,9 +2,7 @@
 <html>
 
 <r:script>
-
     $('input[name=title]').focus();
-
 </r:script>
 
 <head></head>
@@ -46,6 +44,14 @@
                     </g:eachError>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="content">Tag</label>
+                <div class="col-sm-10">
+                    <g:textField name="tag" class="form-control"/>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Submit</button>
