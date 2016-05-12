@@ -3,7 +3,8 @@ package blagger
 class PostController {
 
     def index() {
-        [posts: Post.list(sort: 'id', order: 'desc')]
+        def posts = Post.list([sort: 'id', order: 'desc', max: 5] + params)
+        [posts: posts, total: Post.count()]
     }
 
     def create() {

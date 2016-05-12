@@ -16,6 +16,8 @@
 
 </g:each>
 
+<g:paginate total="${total}" max="5"/>
+
 </body>
 
 </html>
