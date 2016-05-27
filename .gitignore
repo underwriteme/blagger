@@ -38,5 +38,6 @@
 /target
 
 # other
+*.iml
+*.ipr
 *.iws
-
