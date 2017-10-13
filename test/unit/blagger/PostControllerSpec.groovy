@@ -9,7 +9,7 @@ class PostControllerSpec extends Specification {
 
     def 'list returns the blag posts'(){
         given:
-        new Post(title: 'test', email: 'test@test.com', content: 'test').save()
+        new Post(title: 'test', email: 'test@test.com', content: 'test', tag: 'test').save()
 
         when:
         def model = controller.index()
@@ -21,8 +21,8 @@ class PostControllerSpec extends Specification {
 
     def 'list returns the blag posts in the correct order'(){
         given:
-        new Post(title: 'test1', email: 'test@test.com', content: 'test').save()
-        new Post(title: 'test2', email: 'test@test.com', content: 'test').save()
+        new Post(title: 'test1', email: 'test@test.com', content: 'test', tag: 'test').save()
+        new Post(title: 'test2', email: 'test@test.com', content: 'test', tag: 'test').save()
 
         when:
         def model = controller.index()
@@ -37,6 +37,7 @@ class PostControllerSpec extends Specification {
         controller.params.title = 'test'
         controller.params.email = 'test@test.com'
         controller.params.content = 'test'
+        controller.params.tag = 'test'
 
         when:
         controller.savePost()
@@ -47,6 +48,7 @@ class PostControllerSpec extends Specification {
         posts[0].title == 'test'
         posts[0].email == 'test@test.com'
         posts[0].content == 'test'
+        posts[0].tag == 'test'
         response.redirectUrl.endsWith('/index')
     }
 
@@ -55,6 +57,7 @@ class PostControllerSpec extends Specification {
         controller.params.title = ''
         controller.params.email = 'test@test.com'
         controller.params.content = 'test'
+        controller.params.tag = 'test'
 
         when:
         controller.savePost()
@@ -68,4 +71,40 @@ class PostControllerSpec extends Specification {
             model.post.hasErrors()
         }
     }
+    
+    def 'create a new blag post with given tag and redirects'() {
+        given:
+        controller.params.title = 'test'
+        controller.params.email = 'test@test.com'
+        controller.params.content = 'test'
+        controller.params.tag = 'test'
+
+        when:
+        controller.savePost()
+        def posts = Post.list()
+
+        then:
+        posts
+        posts[0].title == 'test'
+        posts[0].email == 'test@test.com'
+        posts[0].content == 'test'
+        posts[0].tag == 'test'
+        response.redirectUrl.endsWith('/index')
+    }
+    
+     def 'create a new blag post with given tag and call indexByTag '() {
+        given:
+        controller.params.title = 'test'
+        controller.params.email = 'test@test.com'
+        controller.params.content = 'test'
+        controller.params.tag = 'test'
+
+        when:
+        controller.savePost()
+        controller.indexByTag()
+
+        then:
+        response.redirectUrl.endsWith('/index')
+    }
+    
 }

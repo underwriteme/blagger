@@ -8,7 +8,7 @@ import spock.lang.Unroll
 @Unroll
 class PostSpec extends Specification {
 
-    def post = new Post(title: 'Title', email: 'test@test.com', content: 'Content')
+    def post = new Post(title: 'Title', email: 'test@test.com', content: 'Content', tag: 'Tag')
 
     void 'should successfully validate post'() {
         expect:
@@ -47,4 +47,32 @@ class PostSpec extends Specification {
         where:
         invalidContent << [null, '']
     }
+    
+    void 'should be invalid if tag is not provided'() {
+        given:
+        post.tag = invalidTag
+
+        expect:
+        !post.validate()
+
+        where:
+        invalidTag << [null, '']
+    }
+    
+    void 'tag can have a maximum of 20 characters'() {
+    when: 'for a string of 21 characters'
+    String str = 'x' * 21
+    domain.tag = str
+
+    then: 'tag validation fails'
+    !domain.validate(['tag'])
+    domain.errors['tag'].code == 'maxSize.exceeded'
+
+    when: 'for a string of 19 characters'
+    str = 'x' * 19
+    domain.tag = str
+
+    then: 'tag validation passes'
+    domain.validate(['tag'])
+	}
 }
